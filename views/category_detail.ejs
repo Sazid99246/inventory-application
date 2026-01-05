@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Items in <%= category.name %>
+    </h1>
+    <p><em>
+            <%= category.description %>
+        </em></p>
+    <hr>
+
+    <% if (items.length> 0) { %>
+        <ul>
+            <% items.forEach(item=> { %>
+                <li>
+                    <strong>
+                        <%= item.name %>
+                    </strong> - $<%= item.price %>
+                        <p>
+                            <%= item.description %>
+                        </p> <a href="/items/<%= item.id %>/update">Edit Item</a>
+                        <br><br>
+                        <form action="/items/<%= item.id %>/delete" method="POST" style="display: inline;">
+                            <input type="password" name="admin_password" placeholder="Admin Password" required>
+                            <button type="submit" onclick="return confirm('Are you sure?')">Delete Item</button>
+                        </form>
+                </li>
+                <hr>
+                <% }) %>
+        </ul>
+        <% } else { %>
+            <p>No items found in this category.</p>
+            <% } %>
+
+                <br>
+                <a href="/items/create">+ Add New Item</a>
+                <a href="/categories">Back to All Categories</a>
+</body>
+
+</html>

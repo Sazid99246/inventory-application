@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>
+        <%= title %>
+    </h1>
+    <hr>
+
+    <ul>
+        <% categories.forEach(category=> { %>
+            <li>
+                <strong>
+                    <%= category.name %>
+                </strong> - <%= category.description %>
+                    <br>
+                    <a href="/categories/<%= category.id %>">View Items</a>
+            </li>
+            <% }) %>
+    </ul>
+
+    <a href="/">Back to Home</a>
+</body>
+
+</html>
